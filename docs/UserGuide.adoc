@@ -121,7 +121,8 @@ Deletes all people from `START_INDEX` to `END_INDEX`.
 The index refers to the index number shown in the most recent listing.
 ****
 
-Example
+Examples:
+
 * `list` +
 `deletem 2 4` +
 Deletes the 2nd, 3rd and 4th person in the address book.
