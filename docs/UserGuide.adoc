@@ -111,6 +111,25 @@ Deletes the 2nd person in the address book.
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
+== Deleting multiple people : `deletem`
+
+Deletes multiple people across a specified range from the address book. Irreversible. +
+Format: `deletem START_INDEX END_INDEX`
+
+****
+Deletes all people from `START_INDEX` to `END_INDEX`.
+The index refers to the index number shown in the most recent listing.
+****
+
+Example
+* `list` +
+`deletem 2 4` +
+Deletes the 2nd, 3rd and 4th person in the address book.
+
+* `find Betsy` +
+`deletem 1 3` +
+Deletes the 1st, 2nd, 3rd person in the results of the `find` command.
+
 == View non-private details of a person : `view`
 
 Displays the non-private details of the specified person. +

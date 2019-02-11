@@ -16,6 +16,7 @@ import seedu.addressbook.commands.AddCommand;
 import seedu.addressbook.commands.ClearCommand;
 import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.DeleteCommand;
+import seedu.addressbook.commands.DeleteMultipleCommand;
 import seedu.addressbook.commands.ExitCommand;
 import seedu.addressbook.commands.FindCommand;
 import seedu.addressbook.commands.HelpCommand;
@@ -156,6 +157,34 @@ public class ParserTest {
         final String input = "viewall " + testIndex;
         final ViewAllCommand result = parseAndAssertCommandType(input, ViewAllCommand.class);
         assertEquals(result.getTargetIndex(), testIndex);
+    }
+
+    /*
+     * Tests for 2 index arguments commands ================================================================
+     */
+
+    @Test
+    public void parse_deleteMultipleCommandNoArgs_errorMessage() {
+        final String[] inputs = { "deletem", "deletem " };
+        final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteMultipleCommand.MESSAGE_USAGE);
+        parseAndAssertIncorrectWithMessage(resultMessage, inputs);
+    }
+
+    @Test
+    public void parse_deleteMultipleCommandArgsIsNotTwoNumbers_errorMessage() {
+        final String[] inputs = { "deletem notAnumber ", "deletem 8*wh12", "deletem 1 2 3 4 5" };
+        final String resultMessage = MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
+        parseAndAssertIncorrectWithMessage(resultMessage, inputs);
+    }
+
+    @Test
+    public void parse_deleteMultipleCommandNumericArg_indexParsedCorrectly() {
+        final int testStartIndex = 1;
+        final int testEndIndex = 3;
+        final String input = "deletem " + testStartIndex + testEndIndex;
+        final DeleteMultipleCommand result = parseAndAssertCommandType(input, DeleteMultipleCommand.class);
+        assertEquals(result.getTargetIndex(), testStartIndex);
+        assertEquals(result.getEndIndex(), testEndIndex);
     }
 
     /*

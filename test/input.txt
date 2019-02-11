@@ -140,6 +140,26 @@
   delete 1
   list
 
+  # re-adding entries for deletem testing
+  add Adam Brown p/111111 e/adam@gmail.com a/111, alpha street
+  list
+  add Charlie Dickson pp/333333 e/charlie.d@nus.edu.sg a/333, gamma street t/friends t/school
+  list
+  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+  list
+
+  # deleting multiple requests
+  deletem 2 4
+  list
+
+  # should catch invalid index
+  deletem -1 0
+  list
+
+  # deletes the valid indices only
+  deletem 2 5
+  list
+
 ##########################################################
 # test clear command
 ##########################################################
