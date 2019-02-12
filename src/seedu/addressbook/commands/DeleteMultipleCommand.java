@@ -36,7 +36,6 @@ public class DeleteMultipleCommand extends Command {
 
         int numOfPersonsToDelete = endIndex - getTargetIndex() + DISPLAYED_INDEX_OFFSET;
 
-
         if (relevantPersons.size() < endIndex) {
             numOfPersonsToDelete = relevantPersons.size() - getTargetIndex() + DISPLAYED_INDEX_OFFSET;
         }
